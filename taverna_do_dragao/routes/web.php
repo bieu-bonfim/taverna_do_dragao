@@ -14,5 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('taverna.index');
+});
+
+Route::get('/login', function () {
+    return view('taverna.login');
+});
+
+Route::get('/register', function () {
+    return view('taverna.register');
 });
