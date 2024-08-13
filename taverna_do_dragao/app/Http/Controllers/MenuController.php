@@ -29,7 +29,14 @@ class menuController extends Controller
         $item = new Item();
         $item->name = $request->input('name');
         $item->price = $request->input('price');
+        $item->description = $request->input('description');
+        $item->typeFood = $request->input('typeFood');
         $item->save();
         return redirect('/menu');
+    }
+
+    public function getItemsByType($typeFood){
+        $items = Item::where('typeFood', $typeFood)->orderBy('name')->get();
+        return view('taverna.menuTypeFood', compact('items', 'typeFood'));
     }
 }

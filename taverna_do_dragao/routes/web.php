@@ -33,3 +33,5 @@ Route::get('/menu/item={itemId}', [MenuController::class, 'getItem']);
 Route::get('/menu/newItem', [MenuController::class, 'newItem']);
 
 Route::post('/menu/storeItem', [MenuController::class, 'storeItem']);
+
+Route::get('/menu/type={foodType}', [MenuController::class, 'getItemsByType']);

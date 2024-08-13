@@ -1,3 +1,6 @@
 <x-layout title="{{$menuItem->name}}">
-    <h2>{{$menuItem->price}}</h2>
+    <ul>
+    <li><div>PREÇO: {{$menuItem->price}}</div></li>
+    <li><div>DESCRIÇÃO: {{$menuItem->description}}</div></li>
+    </ul>
 </x-layout>
