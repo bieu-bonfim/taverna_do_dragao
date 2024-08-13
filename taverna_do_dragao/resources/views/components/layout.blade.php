@@ -8,6 +8,16 @@
     <link rel="stylesheet" href="{{ asset("css/app.css") }}">
 
     <title>{{ $title }}</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+    </style>
+    <style>
+        body {
+            font-family: 'MedievalSharp', cursive;
+            font-weight: 400;
+            font-style: normal;
+        }
+    </style>
 </head>
 <body>
     <div class="container">

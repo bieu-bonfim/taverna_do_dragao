@@ -28,4 +28,8 @@ Route::get('/register', function () {
 
 Route::get('/menu', [MenuController::class, 'listItems']);
 
-Route::get('/menu/{itemName}', [MenuController::class, 'getItem']);
+Route::get('/menu/item={itemId}', [MenuController::class, 'getItem']);
+
+Route::get('/menu/newItem', [MenuController::class, 'newItem']);
+
+Route::post('/menu/storeItem', [MenuController::class, 'storeItem']);
