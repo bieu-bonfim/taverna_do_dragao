@@ -4,6 +4,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+        </style>
+
         <title>Taverna do Dragão</title>
 
         <!-- Fonts -->
@@ -16,11 +20,13 @@
 
         <style>
             body {
-                font-family: 'Nunito', sans-serif;
+                font-family: 'MedievalSharp', cursive;
+                font-weight: 400;
+                font-style: normal;
             }
         </style>
     </head>
     <body class="antialiased">
-        
+        <h1>OLÁ TAVERNA.</h1>
     </body>
 </html>

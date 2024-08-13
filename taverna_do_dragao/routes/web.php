@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MenuController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,3 +25,7 @@ Route::get('/login', function () {
 Route::get('/register', function () {
     return view('taverna.register');
 });
+
+Route::get('/menu', [MenuController::class, 'listItems']);
+
+Route::get('/menu/{itemName}', [MenuController::class, 'getItem']);
