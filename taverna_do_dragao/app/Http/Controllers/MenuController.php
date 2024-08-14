@@ -5,13 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Item;
 
-class menuController extends Controller
+class MenuController extends Controller
 {
     public function listItems(){
         //
         $items = Item::query()->orderBy('name')->get();
 
-        return view('taverna.menu', compact('items'));
+        return view('taverna.menu.menu', compact('items'));
     }
 
     public function getItem($itemId)

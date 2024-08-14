@@ -1,8 +1,9 @@
 <?php
 
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\ShoppingCartController;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,7 +27,7 @@ Route::get('/register', function () {
     return view('taverna.register');
 });
 
-Route::get('/menu', [MenuController::class, 'listItems']);
+Route::get('/cardapio', [MenuController::class, 'listItems']);
 
 Route::get('/menu/item={itemId}', [MenuController::class, 'getItem']);
 
@@ -35,3 +36,7 @@ Route::get('/menu/newItem', [MenuController::class, 'newItem']);
 Route::post('/menu/storeItem', [MenuController::class, 'storeItem']);
 
 Route::get('/menu/type={foodType}', [MenuController::class, 'getItemsByType']);
+
+Route::get('/reservas', [ReservationController::class, 'create']);
+
+Route::get('/carrinho-de-compras', [ShoppingCartController::class, 'create']);

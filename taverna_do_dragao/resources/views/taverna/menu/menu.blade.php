@@ -1,4 +1,4 @@
-<x-layout title="Menu">
+<x-layout title="Cardápio">
     <a href="/menu/newItem" class="btn btn-dark mb-2">novo item</a>
     <x-menu-type-food />
 
