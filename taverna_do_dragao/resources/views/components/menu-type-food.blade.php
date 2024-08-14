@@ -1,6 +1,6 @@
 <div class="container mt-5">
     <div class="d-flex flex-column justify-content-center">
-        <a href="/menu" class="btn btn-primary mb-3">Cardápio</a>
+        <a href="/cardapio" class="btn btn-primary mb-3">Cardápio</a>
         <!-- Lista Horizontal de Botões -->
         <div class="btn-group" role="group" aria-label="Button group">
             <a href="/menu/type=Porções" class="btn btn-primary">Porções</a>
