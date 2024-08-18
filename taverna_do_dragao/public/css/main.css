@@ -17,6 +17,19 @@ body{
     margin-top: 15px;
 }
 
+.flex-column-center{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-row-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* ======================= HEADER ============================== */
 .container-header{
     /* display: inline-block; */
@@ -125,12 +138,107 @@ body{
 }
 
 /* -------------------- ABOUT ------------------- */
-.footer{
+.container-div-about{
     bottom: 0;
     left: 0;
     width: 100%;
+    display: inline-block;
+    position: relative;
+}
+.div-about{
+    margin: 50px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 145px;
+    right: 20px;
+    font-size: 40px;
+    color: white;
+    text-align: center;
+    gap: 50px;
+    
+}
+.h1-about{
+    font-size: 50px;
+    font-weight: bolder;
+}
+.div-about p{
+    line-height: 55px;
 }
 .img-about-background{
     width: 100%;
     height: 700px;
+}
+
+/* ===================== Menu PAGE ======================== */
+
+.container-section-menu{
+    margin-top: 35px;
+}
+
+.container-section-menu h1{
+    font-size: 30px;
+    text-transform: uppercase;
+    font-weight: bolder;
+}
+
+.ul-menu-list{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 120px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    font-size: 30px;
+    text-transform: uppercase;
+    font-weight: bolder;
+}
+
+.ul-menu-list li{
+    -webkit-transition: -webkit-transform .4s ease;
+    transition: transform .3s ease;
+}
+
+.ul-menu-list li:hover{
+    cursor: pointer;
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+.div-cards-menu-plates{
+    font-family: Arial, Helvetica, sans-serif;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.card{
+    -webkit-transition: -webkit-transform .4s ease;
+    transition: transform .3s ease;
+}
+.card:hover{
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+.card-body{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+
+/* ------------------ Plates ---------------- */
+.div-menus{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    gap: 18px;
+}
+
+
+/* ======================== Footer ===================== */
+footer h1{
+    text-align: center;
+    padding: 0 0px 20px;
+    font-weight: bolder;
 }

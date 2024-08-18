@@ -10,8 +10,15 @@ class MenuController extends Controller
     public function listItems(){
         //
         $items = Item::query()->orderBy('name')->get();
-
-        return view('taverna.menu.menu', compact('items'));
+        $itemsTest = [
+            'Atlético',
+            'Cruzeiro',
+            'Flamengo',
+            'Fluminense',
+            'Teste',
+            'Oi',
+        ];
+        return view('taverna.menu.menu', compact('itemsTest'));
     }
 
     public function getItem($itemId)

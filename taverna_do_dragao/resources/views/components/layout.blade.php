@@ -36,5 +36,8 @@
         <!-- <h1>{{ $title }}</h1> -->
         {{ $slot }}
     </div>
+    <footer>
+       <h1>© Taverna do Dragão</h1>
+    </footer>
 </body>
 </html>
