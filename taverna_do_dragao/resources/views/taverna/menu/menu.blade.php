@@ -16,16 +16,19 @@
         <div id="plates" class="div-menus flex-column-center">
             <img class="img-shield" src="/img/chef-hat.png" alt="Minha Figura">
             <h1>Pratos</h1>
+          
             <div class="div-cards-menu-plates">
-                @foreach ($itemsTest as $item)
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top"  src="/img/background_main.png" alt="Minha Figura">
-                        <div class="card-body">
-                            <h5 class="card-title">{{$item}}</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-dark">Adicionar ao carrinho</a>
+                @foreach ($items as $item)
+                    @if($item->typeFood == 'plate')
+                        <div class="card" style="width: 19rem;">
+                            <img class="card-img-top"  src="{{$item->image}}" alt="Minha Figura">
+                            <div class="card-body">
+                                <h5 class="card-title">{{$item->name}}</h5>
+                                <p class="card-text">{{$item->description}}</p>
+                                <a href="#" class="btn btn-dark">Adicionar ao carrinho</a>
+                            </div>
                         </div>
-                    </div>
+                    @endif
                 @endforeach
             </div>
         </div>
@@ -33,15 +36,17 @@
             <img class="img-shield" src="/img/chef-hat.png" alt="Minha Figura">
             <h1>Porções</h1>
             <div class="div-cards-menu-plates">
-                @foreach ($itemsTest as $item)
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top"  src="/img/background_main.png" alt="Minha Figura">
-                        <div class="card-body">
-                            <h5 class="card-title">{{$item}}</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-dark">Adicionar ao carrinho</a>
+                @foreach ($items as $item)
+                    @if($item->typeFood == 'serving')
+                        <div class="card" style="width: 19rem;">
+                            <img class="card-img-top" src="{{$item->image}}" alt="Minha Figura">
+                            <div class="card-body">
+                                <h5 class="card-title">{{$item->name}}</h5>
+                                <p class="card-text">{{$item->description}}</p>
+                                <a href="#" class="btn btn-dark">Adicionar ao carrinho</a>
+                            </div>
                         </div>
-                    </div>
+                    @endif
                 @endforeach
             </div>
         </div>
@@ -49,15 +54,17 @@
             <img class="img-shield" src="/img/chef-hat.png" alt="Minha Figura">
             <h1>Bebidas</h1>
             <div class="div-cards-menu-plates">
-                @foreach ($itemsTest as $item)
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top"  src="/img/background_main.png" alt="Minha Figura">
-                        <div class="card-body">
-                            <h5 class="card-title">{{$item}}</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-dark">Adicionar ao carrinho</a>
+                @foreach ($items as $item)
+                    @if($item->typeFood == 'drink')
+                        <div class="card" style="width: 19rem;">
+                            <img class="card-img-top" src="{{$item->image}}" alt="Minha Figura">
+                            <div class="card-body">
+                                <h5 class="card-title">{{$item->name}}</h5>
+                                <p class="card-text">{{$item->description}}</p>
+                                <a href="#" class="btn btn-dark">Adicionar ao carrinho</a>
+                            </div>
                         </div>
-                    </div>
+                    @endif
                 @endforeach
             </div>
         </div>
@@ -65,15 +72,17 @@
             <img class="img-shield" src="/img/chef-hat.png" alt="Minha Figura">
             <h1>Sobremesas</h1>
             <div class="div-cards-menu-plates">
-                @foreach ($itemsTest as $item)
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top"  src="/img/background_main.png" alt="Minha Figura">
-                        <div class="card-body">
-                            <h5 class="card-title">{{$item}}</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-dark">Adicionar ao carrinho</a>
+                @foreach ($items as $item)
+                    @if($item->typeFood == 'dessert')
+                        <div class="card" style="width: 19rem;">
+                            <img class="card-img-top"  src="{{$item->image}}" alt="Minha Figura">
+                            <div class="card-body">
+                                <h5 class="card-title">{{$item->name}}</h5>
+                                <p class="card-text">{{$item->description}}</p>
+                                <a href="#" class="btn btn-dark">Adicionar ao carrinho</a>
+                            </div>
                         </div>
-                    </div>
+                    @endif
                 @endforeach
             </div>
         </div>
