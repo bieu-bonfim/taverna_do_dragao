@@ -244,10 +244,115 @@ body{
 }
 
 
+/* ========================= Reservation ===================== */
+.main-reservation{
+    margin-top: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+.container-div-reservation{
+  width: 100%;
 
+  display: flex;
+  justify-content: center;
+}
+
+.img-reservation{
+    height: 600px;
+}
+
+#parchment {
+    position: absolute;
+    display: flex;
+      width: 30%;
+    min-height: calc((1vw + 1vh) * 25);
+    /* center page with absolute position */
+    top: 0%; left: 50%; transform: translate(-50%, 0);
+    /* margin: 4em 0; */
+      padding: 4em;
+      box-shadow: 0px 0px 5px black, 0 0 60px #8a4d0f inset;
+      background: #fffef0;
+    filter: url(#wavy2);
+  }
+.container-div-parchment{
+    position: relative;
+}
+.container-div-form-reservation{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    margin-top: -130px;
+    margin-left: 20px;
+    gap: 25px;
+}
+.container-div-form-reservation h1{
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 10px;
+}
+.form-reservation {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: start;
+    gap: 5px;
+}
+.form-reservation button{
+    width: 120px;
+}
+/* .form-reservation div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: start;
+} */
 /* ======================== Footer ===================== */
 footer h1{
     text-align: center;
     padding: 0 0px 20px;
     font-weight: bolder;
 }
+footer{
+    position: fixed;
+    text-align: center;
+    bottom: 0;
+    width: 100%;
+}
+
+
+/* ======================= Media Query ===================== */
+
+/* @media (max-width: 780px){
+    .main-reservation{
+        margin-top: 5%;
+    }
+    .div-links-header{
+        font-size: 20px;
+        top:25px;
+    }
+    #parchment {
+        width: 80%;
+        min-height: calc((1vw + 1vh) * 38);
+    }
+    .form-reservation{
+        width: 60%;
+        margin: 0 auto;
+    }
+} */
+
+/* @media (max-width: 450px){
+    .div-links-header{
+        font-size: 15px;
+        top:25px;
+    }
+    #parchment {
+        width: 80%;
+        min-height: calc((1vw + 1vh) * 52);
+    }
+} */
+
