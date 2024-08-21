@@ -27,8 +27,9 @@
                 <a href="/">Home</a>
                 <a href="/cardapio">Cardápio</a>
                 <a href="/reservas">Reservas</a>
-                <a href="/carrinho-de-compras">Carrinho de compras</a>
+                <a class="div-link-header-shopping-cart" href="/carrinho-de-compras">Carrinho de compras</a>
         </div>
+        <a class="div-link-shopping-cart" href="/carrinho-de-compras">Carrinho de compras</a>
         <img class="img-header" src="/img/header.png" alt="Header do Taverna do Dragão">
    </header>
     <div class="container-div">

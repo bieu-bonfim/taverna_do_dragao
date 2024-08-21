@@ -45,33 +45,69 @@ body{
 }
 
 
-.img-header{
-    width: 100%;
-    height: 80px;
-}
 
-.div-links-header{
-    width: 100%;
-    display: flex;
-    justify-content:space-evenly;
-    align-items: center;
-    position: absolute;
-    top: 20px;
-    font-size: 30px;
-    color: black;
-    /* text-shadow: 0px 0px 5px black; */
+/* 
+ */
+@media (min-width: 350px){
+    .container-div-links-header{
+        display: flex;
+        flex-direction: row;
+    }
+    .img-header{
+        width: 100%;
+        height: 120px;
+    }
+    .div-links-header{
+        width: 100%;
+        display: flex;
+        justify-content:space-evenly;
+        align-items: center;
+        position: absolute;
+        top: 20px;
+        font-size: 25px;
+        color: black;
+    }
+    .div-link-header-shopping-cart{
+        display: none;
+    }
+    .div-link-shopping-cart{
+        width: 100%;
+        display: flex;
+        justify-content:space-evenly;
+        align-items: center;
+        position: absolute;
+        top: 65px;
+        font-size: 25px;
+        color: black;
+    }
 }
-.div-links-header a{
-    -webkit-transition: -webkit-transform .4s ease;
-    transition: transform .4s ease;
+@media (min-width: 1090px){
+    .container-div-links-header{
+        flex-direction: row;
+    }
+    .div-link-header-shopping-cart{
+        display: block;
+    }
+    .div-link-shopping-cart{
+        display: none;
+    }
+    .img-header{
+        height: 80px;
+    }
+    .div-links-header{
+        font-size: 30px;
+    }
+    .div-links-header a{
+        -webkit-transition: -webkit-transform .4s ease;
+        transition: transform .4s ease;
+    }
+    
+    .div-links-header a:hover{
+        cursor: pointer;
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+    }
 }
-
-.div-links-header a:hover{
-    cursor: pointer;
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
-}
-
 /* ======================= HOME PAGE ============================== */
 
 .img-main-background{
@@ -90,7 +126,6 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px;
 }
 
 .div-middle{
@@ -104,31 +139,15 @@ body{
     flex-wrap: wrap;
     font-size: 25px;
 }
-.div-middle span {
-    font-weight: bolder;
-    font-size: 30px;
-}
+
 
 .img-sword{
     width: 250px;
 }
 
-.img-shield{
-    width: 150px;
-    -webkit-transition: -webkit-transform .4s ease;
-    transition: transform .4s ease;
-}
-
-
 .img-shield:hover{
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
-}
-
-.img-middle{
-    width: 100px;
-    -webkit-transition: -webkit-transform .4s ease;
-    transition: transform .4s ease;
 }
 
 .img-middle:hover{
@@ -137,37 +156,112 @@ body{
     transform: scale(1.1);
 }
 
+@media (min-width: 350px){
+    .container-div-middle{
+        gap:0
+    }
+    .div-middle h1{
+        font-size: 20px;
+    }
+    .div-middle span {
+        font-weight: bolder;
+        font-size: 15px;
+        text-align: center;
+    }
+    .img-shield{
+        width: 95px;
+        -webkit-transition: -webkit-transform .4s ease;
+        transition: transform .4s ease;
+    }
+    .img-middle{
+        width:72px;
+        -webkit-transition: -webkit-transform .4s ease;
+        transition: transform .4s ease;
+    }
+}
+
+@media (min-width: 1090px){
+    .container-div-middle{
+        gap: 30px;
+    }
+    .div-middle span {
+        font-weight: bolder;
+        font-size: 30px;
+    }
+    .img-shield{
+        width: 150px;
+    }
+    .img-middle{
+        width: 100px;
+    }
+}
+
 /* -------------------- ABOUT ------------------- */
-.container-div-about{
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    display: inline-block;
-    position: relative;
+@media (min-width:350px){
+    .container-div-about{
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        display: inline-block;
+        position: relative;
+    }
+    .div-about{
+        margin: 18px;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        top: 145px;
+        right: 20px;
+        font-size: 20px;
+        color: white;
+        text-align: center;
+        gap: 50px;
+        
+    }
+    .h1-about{
+        font-size: 30px;
+        font-weight: bolder;
+    }
+    .div-about p{
+        line-height: 35px;
+    }
+    .img-about-background{
+        width: 100%;
+        height: 700px;
+    }
 }
-.div-about{
-    margin: 50px;
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    top: 145px;
-    right: 20px;
-    font-size: 40px;
-    color: white;
-    text-align: center;
-    gap: 50px;
-    
-}
-.h1-about{
-    font-size: 50px;
-    font-weight: bolder;
-}
-.div-about p{
-    line-height: 55px;
-}
-.img-about-background{
-    width: 100%;
-    height: 700px;
+@media (min-width:1090px){
+    .container-div-about{
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        display: inline-block;
+        position: relative;
+    }
+    .div-about{
+        margin-left: 50px;
+        margin-right: 50px;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        top: 145px;
+        right: 20px;
+        font-size: 28px;
+        color: white;
+        text-align: center;
+        gap: 50px;
+    }
+    .h1-about{
+        font-size: 40px;
+        font-weight: bolder;
+    }
+    .div-about p{
+        line-height: 55px;
+    }
+    .img-about-background{
+        width: 100%;
+        height: 700px;
+    }
 }
 
 /* ===================== Menu PAGE ======================== */
@@ -177,19 +271,6 @@ body{
 }
 
 .container-section-menu h1{
-    font-size: 30px;
-    text-transform: uppercase;
-    font-weight: bolder;
-}
-
-.ul-menu-list{
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    gap: 120px;
-    margin-top: 25px;
-    margin-bottom: 25px;
     font-size: 30px;
     text-transform: uppercase;
     font-weight: bolder;
@@ -206,13 +287,6 @@ body{
     transform: scale(1.1);
 }
 
-.div-cards-menu-plates{
-    font-family: Arial, Helvetica, sans-serif;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-}
-
 .card{
     -webkit-transition: -webkit-transform .4s ease;
     transition: transform .3s ease;
@@ -221,27 +295,74 @@ body{
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
 }
-.card-body{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 15px;
-}
-.card-body h5{
-    font-weight: bold;
-    font-size: 20px;
-}
-.card-img-top{
-    width: 100%;
-    height: 230px;
+
+
+@media (min-width: 350px){
+    .img-sword{
+        width: 150px;
+    }
+    .ul-menu-list{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        margin-top: 35px;
+        margin-bottom: 35px;
+        font-size: 25px;
+        text-transform: uppercase;
+        font-weight: bolder;
+    }
+    .div-cards-menu-plates{
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        margin-top: 50px;
+    }
+    .card-body{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 15px;
+    }
+    .card-body h5{
+        font-weight: bold;
+        font-size: 20px;
+    }
+    .card-img-top{
+        width: 100%;
+        height: 230px;
+    } 
 }
 
+@media (min-width: 1090px){
+    .ul-menu-list{
+        flex-direction: row;
+        width: 100%;
+        font-size: 30px;
+        gap: 50px;
+    }
+    .div-cards-menu-plates{
+        font-family: Arial, Helvetica, sans-serif;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+}
+
+/* 
+
+
+
+
+
 /* ------------------ Plates ---------------- */
-.div-menus{
+/* .div-menus{
     margin-top: 50px;
     margin-bottom: 50px;
     gap: 18px;
-}
+} */
 
 
 /* ========================= Reservation ===================== */
@@ -318,7 +439,9 @@ footer h1{
     font-weight: bolder;
 }
 footer{
-    position: fixed;
+    /* position: fixed; */
+    /* position: absolute; */
+    margin-top: 50px;
     text-align: center;
     bottom: 0;
     width: 100%;
