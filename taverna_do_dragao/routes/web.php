@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\ShoppingCartController;
 use Illuminate\Support\Facades\Route;
@@ -40,3 +41,5 @@ Route::get('/menu/type={foodType}', [MenuController::class, 'getItemsByType']);
 Route::get('/reservas', [ReservationController::class, 'create']);
 
 Route::get('/carrinho-de-compras', [ShoppingCartController::class, 'create']);
+
+Route::get('/dashboard', [DashboardController::class, 'createDashboard']);

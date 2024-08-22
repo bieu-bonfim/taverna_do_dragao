@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -22,23 +22,25 @@
     </style>
 </head>
 <body class="body">
-    <header class="container-header">
-        <div class="div-links-header"> 
-                <a href="/">Home</a>
-                <a href="/cardapio">Cardápio</a>
-                <a href="/reservas">Reservas</a>
-                <a class="div-link-header-shopping-cart" href="/carrinho-de-compras">Carrinho de compras</a>
-        </div>
-        <a class="div-link-shopping-cart" href="/carrinho-de-compras">Carrinho de compras</a>
-        <img class="img-header" src="/img/header.png" alt="Header do Taverna do Dragão">
-   </header>
-    <div class="container-div">
-
-        <!-- <h1>{{ $title }}</h1> -->
+    @if (Request::path() != 'dashboard')
+        <header class="container-header">
+            <div class="div-links-header"> 
+                    <a href="/">Home</a>
+                    <a href="/cardapio">Cardápio</a>
+                    <a href="/reservas">Reservas</a>
+                    <a class="div-link-header-shopping-cart" href="/carrinho-de-compras">Carrinho de compras</a>
+            </div>
+            <a class="div-link-shopping-cart" href="/carrinho-de-compras">Carrinho de compras</a>
+            <img class="img-header" src="/img/header.png" alt="Header do Taverna do Dragão">
+        </header>
+    @endif
+    <div class="{{(Request::path() != 'dashboard') ? 'container-div' : ''}}">
         {{ $slot }}
     </div>
-    <footer>
-       <h1>© Taverna do Dragão</h1>
-    </footer>
+    @if (Request::path() != 'dashboard')
+        <footer>
+            <h1>© Taverna do Dragão</h1>
+        </footer>
+    @endif
 </body>
 </html>
