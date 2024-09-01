@@ -13,9 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user', function (Blueprint $table) {
-            $table->id();
-            $table->string('nome', 64);
+        Schema::create('reservation', function (Blueprint $table) {
+            $table->id('idReservation');
+            $table->string('email', 200);
+            $table->string('name', 45);
+            $table->string('phone', 15);
+            $table->string('reservationDate', 150);
+            $table->integer('tableQuantity');
+            $table->integer('chairQuantity');
             $table->timestamps();
         });
     }
@@ -27,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user');
+        Schema::dropIfExists('reservation');
     }
 };

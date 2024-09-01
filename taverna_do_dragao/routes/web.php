@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\ShoppingCartController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -42,4 +44,30 @@ Route::get('/reservas', [ReservationController::class, 'create']);
 
 Route::get('/carrinho-de-compras', [ShoppingCartController::class, 'create']);
 
-Route::get('/dashboard', [DashboardController::class, 'createDashboard']);
+Route::controller(LoginController::class)->group(function (){
+    Route::get('/login', 'index')->name('login.index');
+    Route::post('/login/save', 'store')->name('login.store');
+
+});
+
+Route::controller(UserController::class)->group(function (){
+    Route::get('/cadastrar', 'index')->name('user.index');
+    Route::post('/signup/save', 'store')->name('user.store');
+
+});
+
+Route::controller(DashboardController::class)->group(function (){
+    Route::get('/dashboard', 'index')->name('dashboard.index')->middleware('auth');
+    Route::get('/dashboard/gestao-comandas', 'indexOrder')->name('dashboard.order.index')->middleware('auth');
+    Route::get('/dashboard/criar-comanda', 'createOrder')->name('dashboard.order.create')->middleware('is_admin');
+    Route::post('/dashboard/order/create', 'storeOrder')->name('dashboard.order.store')->middleware('auth');
+    Route::get('/dashboard/comanda/{id}', 'viewOrder')->name('dashboard.order.viewOrder')->middleware('auth');
+    
+    Route::get('/dashboard/gestao/cardapio', 'indexMenu')->name('dashboard.menu.index')->middleware('auth');
+    Route::get('/dashboard/gestao/cardapio/criar', 'createMenu')->name('dashboard.menu.create')->middleware('auth');
+    Route::post('/dashboard/gestao/cardapio/create', 'storeMenu')->name('dashboard.menu.store')->middleware('auth');
+
+
+  
+
+});

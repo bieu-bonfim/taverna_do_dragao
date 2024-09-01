@@ -1,9 +1,10 @@
 <!doctype html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/css/main.css" type="text/css">
@@ -21,26 +22,54 @@
         }
     </style>
 </head>
+
 <body class="body">
-    @if (Request::path() != 'dashboard')
+    @if (str_contains(Request::path(), 'dashboard') === false &&
+            str_contains(Request::path(), 'login') === false &&
+            str_contains(Request::path(), 'cadastrar') === false)
         <header class="container-header">
-            <div class="div-links-header"> 
-                    <a href="/">Home</a>
-                    <a href="/cardapio">Cardápio</a>
-                    <a href="/reservas">Reservas</a>
-                    <a class="div-link-header-shopping-cart" href="/carrinho-de-compras">Carrinho de compras</a>
+            <div class="div-links-header">
+                <a href="/">Home</a>
+                <a href="/cardapio">Cardápio</a>
+                <a href="/reservas">Reservas</a>
+                <a class="div-link-header-shopping-cart" href="/carrinho-de-compras">Carrinho de compras</a>
             </div>
             <a class="div-link-shopping-cart" href="/carrinho-de-compras">Carrinho de compras</a>
             <img class="img-header" src="/img/header.png" alt="Header do Taverna do Dragão">
         </header>
+    @elseif (Request::path() == 'dashboard')
+        <header class="header-dashboard">
+            {{-- <a href="/">Taverna do Dragão - Dashboard</a>
+            <a href="/cardapio">Logout</a> --}}
+        </header>
     @endif
-    <div class="{{(Request::path() != 'dashboard') ? 'container-div' : ''}}">
+    @if (@session('status'))
+        <div class="alert alert-success" role="alert">
+            {{ session('status') }}
+        </div>
+    @endif
+    @if (Session::has('error'))
+        <div class="m-0 p-8 alert alert-danger" role="alert">
+            {{ session('error') }}
+        </div>
+    @endif
+    @if ($errors->any())
+        <div class="m-0 p-8 alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    <div class="{{ str_contains(Request::path(), 'dashboard') === false ? 'container-div' : 'container-div-dash' }}">
         {{ $slot }}
     </div>
-    @if (Request::path() != 'dashboard')
+    @if (Request::path() != 'dashboard' && Request::path() != 'login')
         <footer>
-            <h1>© Taverna do Dragão</h1>
+            {{-- <h1>© Taverna do Dragão</h1> --}}
         </footer>
     @endif
 </body>
+
 </html>
