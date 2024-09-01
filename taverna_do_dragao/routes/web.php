@@ -66,6 +66,15 @@ Route::controller(DashboardController::class)->group(function (){
     Route::get('/dashboard/gestao/cardapio', 'indexMenu')->name('dashboard.menu.index')->middleware('auth');
     Route::get('/dashboard/gestao/cardapio/criar', 'createMenu')->name('dashboard.menu.create')->middleware('auth');
     Route::post('/dashboard/gestao/cardapio/create', 'storeMenu')->name('dashboard.menu.store')->middleware('auth');
+    Route::delete('/dashboard/gestao/cardapio/delete/{id}', 'deleteProduct')->name('dashboard.menu.deleteProduct')->middleware('auth');
+
+
+    Route::get('/dashboard/gestao/comanda/editar/{id}', 'indexEdit')->name('dashboard.order.edit')->middleware('auth');
+    Route::put('/dashboard/gestao/comanda/update/{id}', 'updateOrder')->name('dashboard.order.update')->middleware('auth');
+
+    Route::get('/dashboard/gestao/comanda/editar/produto/{id}', 'indexAddProduct')->name('dashboard.order.addProduct')->middleware('auth');
+    Route::post('/dashboard/gestao/comanda/update/produto/{id}', 'updateOrderProduct')->name('dashboard.order.updateOrderProduct')->middleware('auth');
+
 
 
   

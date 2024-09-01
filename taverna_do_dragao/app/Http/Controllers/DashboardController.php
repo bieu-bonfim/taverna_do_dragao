@@ -53,10 +53,33 @@ class DashboardController extends Controller
 
     public function viewOrder(Request $request)
     {
-        $order = Order::findOrFail($request->id);
-        return view('dashboard.order.view')->with(compact('order'));
+        // $order = Order::findOrFail($request->id);
+        $order = Order::with('Product')->find($request->id);
+        $totalPrice = 0;
+        foreach($order->Product as $product){
+            $totalPrice = $totalPrice + ((float) $product->price * $product->pivot->quantity );
+        }
+        return view('dashboard.order.view')->with(compact('order','totalPrice'));
     }
+    public function updateOrder(Request $request)
+    {
 
+        $user_id = auth()->user()->id;
+
+        $order = Order::findOrFail($request->id);
+        $order->customerName = $request->input('customerName');
+        $order->customerPhone = $request->input('customerPhone');
+        $order->tableNumber = $request->input('tableNumber');
+        $order->user_id = $user_id;
+
+        $order->save();
+
+        if ($order->save()) {
+            return to_route('dashboard.order.index')->with('message', "A comanda foi editada com sucesso");;
+        }
+        return to_route("dashboard.index");
+
+    }
     public function indexMenu()
     {
         $products = Product::query()->orderBy('name')->get();
@@ -72,6 +95,10 @@ class DashboardController extends Controller
 
         $request->validated();
 
+        error_log($request->image);
+        $imageName = time().'.'.request()->image->getClientOriginalExtension();
+        request()->image->move(public_path('img'), $imageName);
+
         $product = new Product();
         $product->name = $request->input('name');
         $product->description = $request->input('description');
@@ -79,10 +106,72 @@ class DashboardController extends Controller
         $product->typeFood = $request->input('typeFood');
         $product->totalQuantity = $request->input('totalQuantity');
         $product->user_id = $user_id;
+        $product->image = $imageName;
 
         if ($product->save()) {
             return to_route(("dashboard.menu.index"))->with('message', "O produto foi cadastrado com sucesso");
         }
         return to_route("dashboard.index");
     }
+
+    public function indexEdit(Request $request)
+    {
+        $products = Product::query()->orderBy('name')->get();
+        $order = Order::findOrFail($request->id);
+        return view('dashboard.order.edit')->with(compact('products', 'order'));
+    }
+
+    public function indexAddProduct(Request $request)
+    {
+        $order = Order::findOrFail($request->id);
+        $products = Product::query()->orderBy('name')->get();
+        return view('dashboard.order.addProduct')->with(compact('products', 'order'));
+    }
+
+    public function updateOrderProduct(Request $request)
+    {
+      
+
+        $product_id = $request->input('productId');
+        $quantity = $request->input('quantity');
+        $order_id = $request->id;
+
+        $product = Product::findOrFail($product_id);
+
+        $productName = $product->name;
+
+        $order = Order::findOrFail($order_id);
+        $productData = [
+            $product_id => ['quantity' => $quantity, 'name' => $productName]
+        ];
+        $order->Product()->attach($productData);
+   
+
+
+
+        // $user_id = auth()->user()->id;   
+
+        // $order = Order::findOrFail($request->id);
+        // $order->customerName = $request->input('customerName');
+        // $order->customerPhone = $request->input('customerPhone');
+        // $order->tableNumber = $request->input('tableNumber');
+        // $order->user_id = $user_id;
+
+        // $order->save();
+
+        // if ($order->save()) {
+        //     return to_route('dashboard.order.index')->with('message', "A comanda foi editada com sucesso");;
+        // }
+        return to_route("dashboard.order.index");
+
+    }
+
+    public function deleteProduct(Request $request)
+    {
+        Product::destroy($request->id);
+        session()->flash('message', "Time deletado com sucesso!");
+        return to_route('dashboard.menu.index');
+    }
+
+
 }

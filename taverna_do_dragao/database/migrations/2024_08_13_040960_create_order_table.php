@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->string('customerName', 45);
-            $table->integer('tableNumber');
+            $table->integer('tableNumber')->unique();
             $table->string('customerPhone', 15);
             $table->float('totalPrice')->nullable();
             $table->foreignId('user_id')->constrained();

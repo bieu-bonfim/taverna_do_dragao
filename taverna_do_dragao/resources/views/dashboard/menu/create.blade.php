@@ -10,7 +10,7 @@
                     </button>
                 </a>
             </div>
-            <form class="form-dash row g-3" action="/dashboard/gestao/cardapio/create" method="post">
+            <form class="form-dash row g-3" action="/dashboard/gestao/cardapio/create" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-items-dash col-md-2">
                     <label for="name" class="form-label label-dashboard">Nome do produto</label>
@@ -27,6 +27,10 @@
                 <div class="form-items-dash col-md-2">
                     <label for="totalQuantity" class="form-label label-dashboard">Quantidade total do produto</label>
                     <input type="number" class="form-control" id="totalQuantity" name="totalQuantity" required>
+                </div>
+                <div class="form-items-dash col-md-2">
+                    <label for="image" class="form-label label-dashboard">Quantidade total do produto</label>
+                    <input type="file" class="form-control" id="image" name="image" accept="image/jpg, image/png, image/jpeg">
                 </div>
                 {{-- <div class="form-items-dash col-md-2">
                     <label for="price" class="form-label label-dashboard">Imagem do produto</label>

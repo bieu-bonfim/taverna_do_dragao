@@ -330,7 +330,7 @@ html, body {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        gap: 15px;
+        gap: 8px;
     }
     .card-body h5{
         font-weight: bold;
@@ -626,4 +626,13 @@ footer{
 }
 .card-img-dash{
     height: 130px;
+}
+
+.form-dash-edit-order {
+    display: flex;
+    gap: 50px;
+}
+
+.btn-edit{
+    width: 200px;
 }

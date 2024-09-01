@@ -1,4 +1,9 @@
 <x-layout title="Dashboard">
+    @isset($message)
+        <div class="alert alert-success">
+            {{ $message }}
+        </div>
+    @endisset
     <main class="main-dash">
         <x-dashboard></x-dashboard>
         <section class="section-dash">
