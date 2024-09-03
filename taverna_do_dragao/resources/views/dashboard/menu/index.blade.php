@@ -21,20 +21,26 @@
             </div>
             <div id="desserts" class="div-menus flex-column-center">
                 <h1 style="color: white; font-size:25px;">Sobremesas</h1>
+                @if ($desserts->isEmpty())
+                    <p style="color: white; font-size:20px; margin-top:15px;">Não há produtos do tipo 'Sobremesas'
+                        disponíveis no
+                        momento</p>
+                @endif
                 <div class="div-cards-menu-plates">
-                    @foreach ($products as $product)
-                        @if ($product->typeFood == 'dessert')
+                    @foreach ($desserts as $dessert)
+                        @if ($dessert->typeFood == 'dessert')
                             <div class="card" style="width: 15rem;">
-                                <img class="card-img-dash" src="/img/{{ $product->image }}" alt="Minha Figura">
+                                <img class="card-img-dash" src="/img/{{ $dessert->image }}" alt="Minha Figura">
                                 <div class="card-body">
-                                    <h5 class="card-title">{{ $product->name }}</h5>
-                                    <h5 class="card-title">Preço: R$ {{ number_format($product->price, 2) }}</h5>
+                                    <h5 class="card-title">{{ $dessert->name }}</h5>
+                                    <h5 class="card-title">Preço: R$ {{ number_format($dessert->price, 2) }}</h5>
 
-                                    <p class="card-text">{{ $product->description }}</p>
-                                    <form action="{{ route('dashboard.menu.deleteProduct', $product->id) }}"
+                                    <p class="card-text">{{ $dessert->description }}</p>
+                                    <form action="{{ route('dashboard.menu.deleteProduct', $dessert->id) }}"
                                         method="post" class="ms-2">
 
-                                        <a href="#" class="btn btn-primary">
+                                        <a href="{{ route('dashboard.menu.edit', $dessert->id) }}"
+                                            class="btn btn-primary">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                                 <path
@@ -43,7 +49,7 @@
                                                     d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
                                             </svg>
                                         </a>
-                                        
+
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" href="#" class="btn btn-danger">
@@ -57,27 +63,33 @@
                                         </button>
 
                                     </form>
-                            </div>
+                                </div>
                         @endif
                     @endforeach
                 </div>
             </div>
             <div id="drink" class="div-menus flex-column-center">
                 <h1 style="color: white; font-size:25px;">Bebidas</h1>
+                @if ($drinks->isEmpty())
+                    <p style="color: white; font-size:20px; margin-top:15px;">Não há produtos do tipo 'Bebidas'
+                        disponíveis no
+                        momento</p>
+                @endif
                 <div class="div-cards-menu-plates">
-                    @foreach ($products as $product)
-                        @if ($product->typeFood == 'drink')
+                    @foreach ($drinks as $drink)
+                        @if ($drink->typeFood == 'drink')
                             <div class="card" style="width: 15rem;">
-                                <img class="card-img-dash" src="/img/{{ $product->image }}" alt="Minha Figura">
+                                <img class="card-img-dash" src="/img/{{ $drink->image }}" alt="Minha Figura">
                                 <div class="card-body">
-                                    <h5 class="card-title">{{ $product->name }}</h5>
-                                    <h5 class="card-title">Preço: R$ {{ number_format($product->price, 2) }}</h5>
+                                    <h5 class="card-title">{{ $drink->name }}</h5>
+                                    <h5 class="card-title">Preço: R$ {{ number_format($drink->price, 2) }}</h5>
 
-                                    <p class="card-text">{{ $product->description }}</p>
-                                    <form action="{{ route('dashboard.menu.deleteProduct', $product->id) }}"
+                                    <p class="card-text">{{ $drink->description }}</p>
+                                    <form action="{{ route('dashboard.menu.deleteProduct', $drink->id) }}"
                                         method="post" class="ms-2">
 
-                                        <a href="#" class="btn btn-primary">
+                                        <a href="{{ route('dashboard.menu.edit', $drink->id) }}"
+                                            class="btn btn-primary">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                                 <path
@@ -86,7 +98,7 @@
                                                     d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
                                             </svg>
                                         </a>
-                                        
+
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" href="#" class="btn btn-danger">
@@ -108,20 +120,25 @@
             </div>
             <div id="plate" class="div-menus flex-column-center">
                 <h1 style="color: white; font-size:25px;">Pratos</h1>
+                @if ($plates->isEmpty())
+                    <p style="color: white; font-size:20px; margin-top:15px;">Não há produtos do tipo 'Pratos'
+                        disponíveis no momento</p>
+                @endif
                 <div class="div-cards-menu-plates">
-                    @foreach ($products as $product)
-                        @if ($product->typeFood == 'plate')
+                    @foreach ($plates as $plate)
+                        @if ($plate->typeFood == 'plate')
                             <div class="card" style="width: 15rem;">
-                                <img class="card-img-dash" src="/img/{{ $product->image }}" alt="Minha Figura">
+                                <img class="card-img-dash" src="/img/{{ $plate->image }}" alt="Minha Figura">
                                 <div class="card-body">
-                                    <h5 class="card-title">{{ $product->name }}</h5>
-                                    <h5 class="card-title">Preço: R$ {{ number_format($product->price, 2) }}</h5>
+                                    <h5 class="card-title">{{ $plate->name }}</h5>
+                                    <h5 class="card-title">Preço: R$ {{ number_format($plate->price, 2) }}</h5>
 
-                                    <p class="card-text">{{ $product->description }}</p>
-                                    <form action="{{ route('dashboard.menu.deleteProduct', $product->id) }}"
+                                    <p class="card-text">{{ $plate->description }}</p>
+                                    <form action="{{ route('dashboard.menu.deleteProduct', $plate->id) }}"
                                         method="post" class="ms-2">
 
-                                        <a href="#" class="btn btn-primary">
+                                        <a href="{{ route('dashboard.menu.edit', $plate->id) }}"
+                                            class="btn btn-primary">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                                 <path
@@ -130,7 +147,7 @@
                                                     d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
                                             </svg>
                                         </a>
-                                        
+
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" href="#" class="btn btn-danger">
@@ -152,19 +169,24 @@
             </div>
             <div id="serving" class="div-menus flex-column-center">
                 <h1 style="color: white; font-size:25px;">Porções</h1>
+                @if ($servings->isEmpty())
+                    <p style="color: white; font-size:20px; margin-top:15px;">Não há produtos do tipo 'Porções'
+                        disponíveis no momento</p>
+                @endif
                 <div class="div-cards-menu-plates">
-                    @foreach ($products as $product)
-                        @if ($product->typeFood == 'serving')
+                    @foreach ($servings as $serving)
+                        @if ($serving->typeFood == 'serving')
                             <div class="card" style="width: 15rem;">
-                                <img class="card-img-dash" src="/img/{{ $product->image }}" alt="Minha Figura">
+                                <img class="card-img-dash" src="/img/{{ $serving->image }}" alt="Minha Figura">
                                 <div class="card-body">
-                                    <h5 class="card-title">{{ $product->name }} </h5>
-                                    <h5 class="card-title">Preço: R$ {{ number_format($product->price, 2) }}</h5>
-                                    <p class="card-text">{{ $product->description }}</p>
-                                    <form action="{{ route('dashboard.menu.deleteProduct', $product->id) }}"
+                                    <h5 class="card-title">{{ $serving->name }} </h5>
+                                    <h5 class="card-title">Preço: R$ {{ number_format($serving->price, 2) }}</h5>
+                                    <p class="card-text">{{ $serving->description }}</p>
+                                    <form action="{{ route('dashboard.menu.deleteProduct', $serving->id) }}"
                                         method="post" class="ms-2">
 
-                                        <a href="#" class="btn btn-primary">
+                                        <a href="{{ route('dashboard.menu.edit', $serving->id) }}"
+                                            class="btn btn-primary">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                                 <path
@@ -173,10 +195,10 @@
                                                     d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
                                             </svg>
                                         </a>
-                                        
+
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" href="#" class="btn btn-danger">
+                                        <button type="submit" class="btn btn-danger">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                                                 <path
