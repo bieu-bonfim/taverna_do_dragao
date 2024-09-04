@@ -1,8 +1,14 @@
 <x-layout title="Home">
+    @isset($message)
+        <div class="margin alert alert-success">
+            {{ $message }}
+        </div>
+    @endisset
     <main class="main-home">
         <section>
-            <div>
+            <div class="div-main-background">
                 <img class="img-main-background" src="/img/background_main.png" alt="Minha Figura">
+                <p>Taverna do Dragão</p>
             </div>
             <div class="container-div-middle">
                 <div>
@@ -30,17 +36,17 @@
                     </div>
                 </div>
             </div>
-            <div class="container-div-about"> 
+            <div class="container-div-about">
                 <img class="img-about-background" src="/img/background_about.png" alt="Minha Figura">
                 <div class="div-about">
                     <h1 class="h1-about">Sobre a nossa taverna</h1>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                         Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                         when an unknown printer took a galley of type and scrambled it to make a type 
-                         specimen book. It has survived not only five 
+                        when an unknown printer took a galley of type and scrambled it to make a type
+                        specimen book. It has survived not only five
                     </p>
                 </div>
             </div>
         </section>
-   </main>
+    </main>
 </x-layout>

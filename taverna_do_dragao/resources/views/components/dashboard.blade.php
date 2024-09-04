@@ -6,19 +6,19 @@
                 <path fill-rule="evenodd"
                     d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
             </svg>
-            <p>Username</p>
+        <p>{{ auth()->user()->username }}</p>
         </div>
 
         <div class="aside-items aside-item-manage">
             <a href="/dashboard">Início</a>
             <a href="/dashboard/gestao/cardapio">Gestão de cardápio</a>
             <a href="/dashboard/gestao-comandas">Gestão de comandas</a>
-            <a href="#">Gestão de reservas</a>
+            <a href="/dashboard/gestao/reserva">Gestão de reservas</a>
         </div>
 
         <div class="aside-items aside-item-username">
-            <p>Editar Perfil</p>
-            <p>Realizar Logout</p>
+            <a class="navbar-brand" href="{{ route('dashboard.profile.index') }}">Editar perfil</a>
+            <a class="navbar-brand" href="{{ route('login.logout') }}">Realizar Logout</a>
         </div>
 
     </aside>

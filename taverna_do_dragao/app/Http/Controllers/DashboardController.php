@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\Reservation;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
@@ -20,7 +22,10 @@ class DashboardController extends Controller
 
     public function index()
     {
-        return view('dashboard.index');
+        $user_id = auth()->user()->user_id;
+        $user = auth()->user();
+
+        return view('dashboard.index')->with(compact('user'));
     }
     public function indexOrder()
     {
@@ -63,7 +68,6 @@ class DashboardController extends Controller
     }
     public function updateOrder(Request $request)
     {
-
         $user_id = auth()->user()->id;
 
         $order = Order::findOrFail($request->id);
@@ -128,7 +132,7 @@ class DashboardController extends Controller
     {
         $user_id = auth()->user()->id;
 
-        $product = product::findOrFail($request->id);
+        $product = Product::findOrFail($request->id);
 
         $image = "";
 
@@ -215,5 +219,36 @@ class DashboardController extends Controller
         Order::destroy($request->id);
         session()->flash('message', "Comanda deletada com sucesso!");
         return to_route('dashboard.order.index');
+    }
+    public function indexReservation(){
+        $reservations = Reservation::query()->orderBy('reservationDate')->get();
+        return view('dashboard.reservation.index')->with(compact('reservations'));
+    }
+    public function editReservation(Request $request){
+        $reservation = Reservation::findOrFail($request->id);
+        return view('dashboard.reservation.edit')->with(compact('reservation'));
+    }
+    public function updateReservation(Request $request){
+
+        $reservation = Reservation::findOrFail($request->id);
+
+        $reservation->name = $request->input('name');
+        $reservation->email = $request->input('email');
+        $reservation->reservationDate = $request->input('reservationDate');
+        $reservation->phone = $request->input('phone');
+        $reservation->chairQuantity = $request->input('chairQuantity');
+
+        $reservation->save();
+
+        if ($reservation->save()) {
+            return to_route('dashboard.reservation.index')->with('message', "O produto foi editado com sucesso");;
+        }
+        return to_route("dashboard.index")->with('message', "Ocoreu um erro");;;
+    }
+    public function deleteReservation(Request $request)
+    {
+        Reservation::destroy($request->id);
+        session()->flash('message', "Reserva  deletada com sucesso!");
+        return to_route('dashboard.reservation.index');
     }
 }

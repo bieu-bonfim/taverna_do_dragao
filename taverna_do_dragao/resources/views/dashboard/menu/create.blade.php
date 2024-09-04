@@ -21,7 +21,7 @@
                 </div>
                 <div class="form-items-dash col-md-2">
                     <label for="description" class="form-label label-dashboard">Descrição do produto</label>
-                    <input type="textarea" class="form-control" id="description" name="description" required>
+                    <textarea class="form-control" id="description" rows="3"></textarea>
                 </div>
                 <div class="form-items-dash col-md-2">
                     <label for="price" class="form-label label-dashboard">Preço do produto</label>

@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Item;
+use App\Models\Product;
 
 class MenuController extends Controller
 {
-    public function listItems(){
+    public function listItems()
+    {
         //
         $items = Item::query()->orderBy('name')->get();
         error_log('Some message here.');
@@ -24,10 +26,14 @@ class MenuController extends Controller
         return view('taverna.menu.menu', compact('items'));
     }
 
-    public function getItem($itemId)
+    public function index()
     {
-        $menuItem = Item::findOrFail($itemId);
-        return view('taverna.menuItem', compact('menuItem'));
+        $drinks = Product::where('typeFood', 'drink')->orderBy('name')->get();
+        $servings = Product::where('typeFood', 'serving')->orderBy('name')->get();
+        $plates = Product::where('typeFood', 'plate')->orderBy('name')->get();
+        $desserts = Product::where('typeFood', 'dessert')->orderBy('name')->get();
+
+        return view('taverna.menu.menu', compact('servings', 'drinks', 'plates', 'desserts'));
     }
 
     public function newItem()
@@ -35,7 +41,8 @@ class MenuController extends Controller
         return view('taverna.newItem');
     }
 
-    public function storeItem(Request $request){
+    public function storeItem(Request $request)
+    {
         $item = new Item();
         $item->name = $request->input('name');
         $item->price = $request->input('price');
@@ -45,7 +52,8 @@ class MenuController extends Controller
         return redirect('/menu');
     }
 
-    public function getItemsByType($typeFood){
+    public function getItemsByType($typeFood)
+    {
         $items = Item::where('typeFood', $typeFood)->orderBy('name')->get();
         return view('taverna.menuTypeFood', compact('items', 'typeFood'));
     }

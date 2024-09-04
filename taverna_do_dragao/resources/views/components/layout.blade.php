@@ -21,6 +21,7 @@
             font-style: normal;
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body class="body">
@@ -43,6 +44,14 @@
             <a href="/cardapio">Logout</a> --}}
         </header>
     @endif
+    @isset($message)
+        <div class="alert-message alert alert-warning alert-dismissible fade show" role="alert">
+            {{ $message }}
+            <button type="button" class="close btn" data-bs-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endisset
     @if (@session('status'))
         <div class="alert alert-success" role="alert">
             {{ session('status') }}
