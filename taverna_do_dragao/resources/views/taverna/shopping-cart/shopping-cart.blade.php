@@ -18,8 +18,8 @@
                         <tr>
                             <td>{{ $details['name'] }}</td>
                             <td>{{ $details['quantity'] }}</td>
-                            <td>{{ $details['price'] }}</td>
-                            <td>{{ $details['price'] * $details['quantity'] }}</td>
+                            <td>R${{ $details['price'] }}</td>
+                            <td>R${{ $details['price'] * $details['quantity'] }}</td>
                             <td>
                                 <a href="{{ route('cart.remove', $id) }}" class="btn btn-danger">Remover</a>
                                 <a href="{{ route('cart.subtract1', $id) }}" class="btn btn-danger">-</a>
