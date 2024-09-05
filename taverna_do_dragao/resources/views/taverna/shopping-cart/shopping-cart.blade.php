@@ -1,7 +1,5 @@
 <x-layout title="Carrinho de compras">
     <main class="margin">
-        <h2>Seu Carrinho</h2>
-
         @if(session('cart'))
             <table class="table">
                 <thead>
@@ -35,7 +33,7 @@
                 <h4><strong>Total: R$ {{ number_format($total, 2, ',', '.') }}</strong></h4>
             </div>
         @else
-            <p>Seu carrinho está vazio!</p>
+            <h1 class="cart-empty">Seu carrinho está vazio</h1>
         @endif
    </main>
 </x-layout>

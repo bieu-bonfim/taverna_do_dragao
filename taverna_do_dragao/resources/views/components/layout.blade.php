@@ -58,12 +58,12 @@
         </div>
     @endif
     @if (Session::has('error'))
-        <div class="m-0 p-8 alert alert-danger" role="alert">
+        <div class="m-0 error alert alert-danger" role="alert">
             {{ session('error') }}
         </div>
     @endif
     @if ($errors->any())
-        <div class="m-0 p-8 alert alert-danger">
+        <div class="m-0 error alert alert-danger">
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>

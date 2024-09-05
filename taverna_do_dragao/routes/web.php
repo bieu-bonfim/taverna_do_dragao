@@ -32,16 +32,6 @@ Route::get('/register', function () {
     return view('taverna.register');
 });
 
-// Route::get('/cardapio', [MenuController::class, 'listItems']);
-
-// Route::get('/menu/item={itemId}', [MenuController::class, 'getItem']);
-
-// Route::get('/menu/newItem', [MenuController::class, 'newItem']);
-
-// Route::post('/menu/storeItem', [MenuController::class, 'storeItem']);
-
-// Route::get('/menu/type={foodType}', [MenuController::class, 'getItemsByType']);
-
 Route::controller(ReservationController::class)->group(function (){
     Route::get('/reservas', 'create')->name('taverna.reservation.create');
     Route::post('/reservation', 'store')->name('taverna.reservation.store');
@@ -59,8 +49,6 @@ Route::controller(LoginController::class)->group(function (){
     Route::get('/login', 'index')->name('login.index');
     Route::post('/login/save', 'store')->name('login.store');
     Route::get('/logout', 'logout')->name('login.logout')->middleware('auth');
-
-
 });
 
 Route::controller(UserController::class)->group(function (){
@@ -93,11 +81,9 @@ Route::controller(OrderController::class)->group(function (){
     Route::post('/dashboard/order/create', 'storeOrder')->name('dashboard.order.store')->middleware('auth');
     Route::get('/dashboard/comanda/{id}', 'viewOrder')->name('dashboard.order.viewOrder')->middleware('auth');
 
-
     Route::get('/dashboard/gestao/comanda/editar/produto/{id}', 'indexAddProduct')->name('dashboard.order.addProduct')->middleware('auth');
     Route::post('/dashboard/gestao/comanda/update/produto/{id}', 'updateOrderProduct')->name('dashboard.order.updateOrderProduct')->middleware('auth');
 });
-
 
 Route::controller(ReservationController::class)->group(function (){
     Route::get('/dashboard/gestao/reserva', 'indexReservation')->name('dashboard.reservation.index')->middleware('auth');

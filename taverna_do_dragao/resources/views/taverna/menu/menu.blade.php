@@ -71,7 +71,7 @@
                             <h5 class="card-title">{{ $drink->name }}</h5>
                             <h5 class="card-title">R${{ number_format($drink->price, 2) }}</h5>
                             <p class="card-text">{{ $drink->description }}</p>
-                            <a href="{{ route('cart.add', $plate->id) }}" class="btn btn-dark">Adicionar ao carrinho</a>
+                            <a href="{{ route('cart.add', $drink->id) }}" class="btn btn-dark">Adicionar ao carrinho</a>
                         </div>
                     </div>
                 @endforeach

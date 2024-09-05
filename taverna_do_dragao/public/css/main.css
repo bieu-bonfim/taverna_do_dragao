@@ -43,6 +43,10 @@ html, body {
     
 }
 
+.error{
+    padding: 42px;
+}
+
 /* ======================= HEADER ============================== */
 .container-header{
     /* display: inline-block; */
@@ -640,4 +644,13 @@ footer{
 
 .btn-edit{
     width: 200px;
+}
+
+
+/* ========== Shopping cart ============ */
+.cart-empty{
+    margin-top: 50px;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
 }

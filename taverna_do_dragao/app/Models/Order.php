@@ -18,10 +18,4 @@ class Order extends Model
     public function Product(){
         return $this->belongsToMany(Product::class)->withPivot('quantity')->withPivot('name')->withTimestamps();
     }
-
-    // public static function booted(){
-    //     self::addGlobalScope('ordered', function(Builder $queryBuilder){
-    //         $queryBuilder->OrderBy('nome');
-    //     });
-    // }
 }
