@@ -39,10 +39,10 @@
                 <img class="img-about-background" src="/img/background_about.png" alt="Minha Figura">
                 <div class="div-about">
                     <h1 class="h1-about">Sobre a nossa taverna</h1>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                        when an unknown printer took a galley of type and scrambled it to make a type
-                        specimen book. It has survived not only five
+                    <p>Bem-vindo à Taverna do Dragão, um refúgio encantado que transporta você diretamente para a era medieval.
+                        Em nossa taverna, cada detalhe é cuidadosamente elaborado para criar uma experiência imersiva, onde o passado ganha vida e a magia do antigo mundo se torna realidade.
+                        Nossos pratos são inspirados nas receitas tradicionais dos tempos de cavaleiros e reis, preparados com ingredientes frescos e uma pitada de ousadia.
+                        Venha descobrir o sabor da aventura e a alegria da boa companhia em cada visita.
                     </p>
                 </div>
             </div>
