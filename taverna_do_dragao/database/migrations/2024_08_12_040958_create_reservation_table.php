@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('name', 45);
             $table->string('phone', 15);
             $table->string('reservationDate', 150);
-            $table->integer('tableQuantity');
             $table->integer('chairQuantity');
             $table->timestamps();
         });

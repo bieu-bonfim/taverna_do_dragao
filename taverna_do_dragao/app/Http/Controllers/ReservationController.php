@@ -36,4 +36,36 @@ class ReservationController extends Controller
 
     }
 
+    public function indexReservation(){
+        $reservations = Reservation::query()->orderBy('reservationDate')->get();
+        return view('dashboard.reservation.index')->with(compact('reservations'));
+    }
+    public function editReservation(Request $request){
+        $reservation = Reservation::findOrFail($request->id);
+        return view('dashboard.reservation.edit')->with(compact('reservation'));
+    }
+    public function updateReservation(Request $request){
+
+        $reservation = Reservation::findOrFail($request->id);
+
+        $reservation->name = $request->input('name');
+        $reservation->email = $request->input('email');
+        $reservation->reservationDate = $request->input('reservationDate');
+        $reservation->phone = $request->input('phone');
+        $reservation->chairQuantity = $request->input('chairQuantity');
+
+        $reservation->save();
+
+        if ($reservation->save()) {
+            return to_route('dashboard.reservation.index')->with('message', "O produto foi editado com sucesso");;
+        }
+        return to_route("dashboard.index")->with('message', "Ocoreu um erro");;;
+    }
+    public function deleteReservation(Request $request)
+    {
+        Reservation::destroy($request->id);
+        session()->flash('message', "Reserva  deletada com sucesso!");
+        return to_route('dashboard.reservation.index');
+    }
+
 }
