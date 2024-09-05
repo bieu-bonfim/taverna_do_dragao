@@ -89,5 +89,22 @@ class OrderController extends Controller
         $order = Order::findOrFail($request->id);
         return view('dashboard.order.edit')->with(compact('products', 'order'));
     }
+    public function updateOrderProduct(Request $request)
+    {
+        $product_id = $request->input('productId');
+        $quantity = $request->input('quantity');
+        $order_id = $request->id;
+
+        $product = Product::findOrFail($product_id);
+
+        $productName = $product->name;
+
+        $order = Order::findOrFail($order_id);
+        $productData = [
+            $product_id => ['quantity' => $quantity, 'name' => $productName]
+        ];
+        $order->Product()->attach($productData);
+        return to_route("dashboard.order.index");
+    }
 
 }

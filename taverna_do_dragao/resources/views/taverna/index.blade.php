@@ -8,7 +8,6 @@
         <section>
             <div class="div-main-background">
                 <img class="img-main-background" src="/img/background_main.png" alt="Minha Figura">
-                <p>Taverna do Dragão</p>
             </div>
             <div class="container-div-middle">
                 <div>
