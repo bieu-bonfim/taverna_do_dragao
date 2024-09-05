@@ -29,7 +29,7 @@
                             <h5 class="card-title">{{ $plate->name }}</h5>
                             <h5 class="card-title">R${{ number_format($plate->price, 2) }}</h5>
                             <p class="card-text">{{ $plate->description }}</p>
-                            <a href="#" class="btn btn-dark">Adicionar ao carrinho</a>
+                            <a href="{{ route('cart.add', $plate->id) }}" class="btn btn-dark">Adicionar ao carrinho</a>
                         </div>
                     </div>
                 @endforeach
@@ -50,7 +50,7 @@
                             <h5 class="card-title">{{ $serving->name }}</h5>
                             <h5>R${{ number_format($serving->price, 2) }}</h5>
                             <p class="card-text">{{ $serving->description }}</p>
-                            <a href="#" class="btn btn-dark">Adicionar ao carrinho</a>
+                            <a href="{{ route('cart.add', $serving->id) }}" class="btn btn-dark">Adicionar ao carrinho</a>
                         </div>
                     </div>
                 @endforeach
@@ -71,7 +71,7 @@
                             <h5 class="card-title">{{ $drink->name }}</h5>
                             <h5 class="card-title">R${{ number_format($drink->price, 2) }}</h5>
                             <p class="card-text">{{ $drink->description }}</p>
-                            <a href="#" class="btn btn-dark">Adicionar ao carrinho</a>
+                            <a href="{{ route('cart.add', $plate->id) }}" class="btn btn-dark">Adicionar ao carrinho</a>
                         </div>
                     </div>
                 @endforeach
@@ -92,7 +92,7 @@
                             <h5 class="card-title">{{ $dessert->name }}</h5>
                             <h5 class="card-title">R${{ number_format($dessert->price, 2) }}</h5>
                             <p class="card-text">{{ $dessert->description }}</p>
-                            <a href="#" class="btn btn-dark">Adicionar ao carrinho</a>
+                            <a href="{{ route('cart.add', $plate->id) }}" class="btn btn-dark">Adicionar ao carrinho</a>
                         </div>
                     </div>
                 @endforeach

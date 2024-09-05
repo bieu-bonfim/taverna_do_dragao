@@ -55,6 +55,11 @@ Route::controller(ReservationController::class)->group(function (){
 });
 
 Route::get('/carrinho-de-compras', [ShoppingCartController::class, 'create']);
+Route::get('cart', [ShoppingCartController::class, 'viewCart'])->name('cart.index');
+Route::get('add-to-cart/{id}', [ShoppingCartController::class, 'addToCart'])->name('cart.add');
+Route::get('remove-from-cart/{id}', [ShoppingCartController::class, 'removeFromCart'])->name('cart.remove');
+Route::get('add-product/{id}', [ShoppingCartController::class, 'add1Product'])->name('cart.add1');
+Route::get('remove-product/{id}', [ShoppingCartController::class, 'subtract1Product'])->name('cart.subtract1');
 
 Route::controller(LoginController::class)->group(function (){
     Route::get('/login', 'index')->name('login.index');
