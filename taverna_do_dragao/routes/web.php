@@ -94,9 +94,9 @@ Route::controller(DashboardController::class)->group(function (){
     Route::post('/dashboard/gestao/comanda/update/produto/{id}', 'updateOrderProduct')->name('dashboard.order.updateOrderProduct')->middleware('auth');
 
     Route::get('/dashboard/gestao/reserva', 'indexReservation')->name('dashboard.reservation.index')->middleware('auth');
-    Route::get('/dashboard/gestao/reserva/editar/{id}', 'editReservation')->name('dashboard.reservation.edit')->middleware('is_admin');
-    Route::put('/dashboard/gestao/reserva/update/{id}', 'updateReservation')->name('dashboard.reservation.update')->middleware('is_admin');
-    Route::delete('/dashboard/gestao/reserva/delete/{id}', 'deleteReservation')->name('dashboard.reservation.delete')->middleware('is_admin');
+    Route::get('/dashboard/gestao/reserva/editar/{id}', 'editReservation')->name('dashboard.reservation.edit')->middleware('auth');
+    Route::put('/dashboard/gestao/reserva/update/{id}', 'updateReservation')->name('dashboard.reservation.update')->middleware('auth');
+    Route::delete('/dashboard/gestao/reserva/delete/{id}', 'deleteReservation')->name('dashboard.reservation.delete')->middleware('auth');
 });
 
 Route::controller(ProfileController::class)->group(function (){
