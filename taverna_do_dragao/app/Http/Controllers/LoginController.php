@@ -13,9 +13,7 @@ class LoginController extends Controller
 
     public function store(Request $request)
     {
-        error_log("entrou");
         $teste = Auth::attempt($request->only('email', 'password'));
-        error_log($teste);
         if (!Auth::attempt($request->only('email', 'password'))) {
             return redirect()->back()
                 ->withErrors('Usuário ou senha inválidos!');
