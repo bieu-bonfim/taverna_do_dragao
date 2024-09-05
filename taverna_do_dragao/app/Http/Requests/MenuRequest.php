@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ProductRequest extends FormRequest
+class MenuRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,17 +24,16 @@ class ProductRequest extends FormRequest
     public function rules()
     {
         return [
-           'name' => 'required|max:45',
-           'description' => 'required|max:250',
-           'price' => 'required|decimal:0,2',
-           'typeFood' => 'required',
-           'totalQuantity' => 'required',
-           'image' => 'required'
+            'name' => 'required|max:45',
+            'description' => 'required|max:250',
+            'price' => 'required|decimal:0,2',
+            'typeFood' => 'required',
+            'totalQuantity' => 'required',
+            'image' => 'required'
         ];
     }
 
-    public function messages()
-    {
+    public function messages(){
         return[
             'name.required' => "O campo 'Nome do produto' precisa ser informado.",
             'name.max' => "O campo 'Nome do produto'  deve ter no máximo :max caracteres",
