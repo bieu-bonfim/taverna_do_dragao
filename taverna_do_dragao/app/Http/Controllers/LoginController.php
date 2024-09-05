@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,9 +12,8 @@ class LoginController extends Controller
         return view('login.index');
     }
 
-    public function store(Request $request)
+    public function store(LoginRequest $request)
     {
-        $teste = Auth::attempt($request->only('email', 'password'));
         if (!Auth::attempt($request->only('email', 'password'))) {
             return redirect()->back()
                 ->withErrors('Usuário ou senha inválidos!');
@@ -26,16 +26,4 @@ class LoginController extends Controller
         Auth::logout();
         return to_route('login.index');
     }
-
-    // public function store(Request $request){
-    //     if(!Auth::attempt($request->only('email', 'password'))){
-    //         return redirect()->back()->withErrors('E-mail ou senha inválidos');
-    //     }
-    //     return redirect("/times");
-
-    // }
-    // public function logout(){
-    //     Auth::logout();
-    //     return to_route('login');
-    // }
 }

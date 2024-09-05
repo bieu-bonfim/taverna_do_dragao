@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ReservationRequest;
 use App\Mail\ReservationPlaced;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
@@ -14,14 +15,9 @@ class ReservationController extends Controller
         return view('taverna.reservation.reservation');
     }
 
-    public function store(Request $request)
+    public function store(ReservationRequest $request)
     {
-        // max 12 reservas no dia
-        // verifica a data maxima
-        // quantidade de cadeiras maxima
-        // return view('taverna.reservation.reservation');
-
-        // $request->validated();
+        $request->validated();
 
         $reservation = new Reservation();
         $reservation->name = $request->input('name');
@@ -37,7 +33,6 @@ class ReservationController extends Controller
             return view(("taverna.reservation.reservation"))->with('message', "A reserva foi cadastrada com sucesso. Verifique seu e-mail");
         }
         return to_route('taverna.reservation.reservation');
-
     }
 
     public function indexReservation(){

@@ -26,7 +26,7 @@ class ReservationRequest extends FormRequest
         return [
             'customerName' => 'required|max:45',
             'customerPhone' => 'required|max:15',
-            'tableNumber' => 'required|integer'
+            'tableNumber' => 'required|integer|max:8'
         ];
     }
 
@@ -36,7 +36,8 @@ class ReservationRequest extends FormRequest
             'customerName.max' => "O campo 'Nome do cliente'  deve ter no máximo :max caracteres",
             'customerPhone.required' => "O campo 'Telefone do cliente' precisa ser informado.",
             'customerPhone.max' => "O campo 'Telefone do cliente' ter no máx :max  caracteres.",
-            'tableNumber.required' => "O campo 'Número da mesa' precisa ser informado."
+            'tableNumber.required' => "O campo 'Número da mesa' precisa ser informado.",
+            'tableNumber.max' => "O máximo de cadeiras para reserva é 8."
         ];
     }
 }

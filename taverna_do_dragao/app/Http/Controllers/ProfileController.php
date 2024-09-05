@@ -16,8 +16,6 @@ class ProfileController extends Controller
     }
     public function update(Request $request)
     {
-        error_log("ue2");
-
         $user_id = auth()->user()->id;
 
         $username = $request->input('username');
@@ -25,12 +23,6 @@ class ProfileController extends Controller
 
         DB::update("update users set username = '$username', email = ' $email' where id = $user_id");
 
-        // $user = User::findOrFail($user_id );
-
-
-
-        // $user->save();
-        // error_log("ue");
         return to_route("dashboard.index");
     }
 }

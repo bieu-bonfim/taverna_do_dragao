@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -40,8 +39,6 @@
         </header>
     @elseif (Request::path() == 'dashboard')
         <header class="header-dashboard">
-            {{-- <a href="/">Taverna do Dragão - Dashboard</a>
-            <a href="/cardapio">Logout</a> --}}
         </header>
     @endif
     @isset($message)
@@ -57,11 +54,11 @@
             {{ session('status') }}
         </div>
     @endif
-    @if (Session::has('error'))
+    {{-- @if (Session::has('error'))
         <div class="m-0 error alert alert-danger" role="alert">
             {{ session('error') }}
         </div>
-    @endif
+    @endif --}}
     @if ($errors->any())
         <div class="m-0 error alert alert-danger">
             <ul>

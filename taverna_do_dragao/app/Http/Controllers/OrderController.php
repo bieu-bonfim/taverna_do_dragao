@@ -19,7 +19,6 @@ class OrderController extends Controller
 
     public function viewOrder(Request $request)
     {
-        // $order = Order::findOrFail($request->id);
         $order = Order::with('Product')->find($request->id);
         $totalPrice = 0;
         foreach ($order->Product as $product) {
