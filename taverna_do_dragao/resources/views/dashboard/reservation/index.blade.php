@@ -27,7 +27,15 @@
                             <th scope="col" style="color: white;"  class="bg-primary">Nome</th>
                             <th scope="col" style="color: white;"  class="bg-primary">E-mail</th>
                             <th scope="col" style="color: white;"  class="bg-primary">Telefone</th>
-                            <th scope="col" style="color: white;"  class="bg-primary">Data da reserva</th>
+                            <th scope="col" style="color: white;" class="bg-primary">
+                                Data da reserva
+                                <input type="date" id="filterDate" class="form-control form-control-sm" style="display: inline; width: auto;">
+                                <button type="button" onclick="filterReservations()" class="btn btn-light btn-sm" style="display: inline;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel" viewBox="0 0 16 16">
+                                        <path d="M1.5 1.5v1l5 5V14l3-3V7.5l5-5v-1h-13zM3 2h10l-4.5 4.5V10.5L8 11V6.5L3 2z"/>
+                                    </svg>
+                                </button>
+                            </th>
                             <th scope="col" style="color: white;"  class="bg-primary">Qntd. Cadeiras</th>
                             <th scope="col" style="color: white;"  class="bg-primary">Funcionalidades</th>
                         </tr>
@@ -75,3 +83,41 @@
         </section>
     </main>
 </x-layout>
+<script>
+    function filterReservations() {
+        var selectedDate = document.getElementById('filterDate').value;
+        if (selectedDate === "") {
+            showAllRows();
+            return;
+        }
+
+        // Ajustar para evitar o problema do fuso horário
+        var dateObj = new Date(selectedDate);
+        dateObj.setMinutes(dateObj.getMinutes() + dateObj.getTimezoneOffset());
+
+        var day = ("0" + dateObj.getDate()).slice(-2);
+        var month = ("0" + (dateObj.getMonth() + 1)).slice(-2);
+        var year = dateObj.getFullYear();
+        var formattedDate = day + "-" + month + "-" + year;
+
+        // Obter todas as linhas da tabela
+        var rows = document.querySelectorAll("tbody tr");
+
+        // Iterar pelas linhas para aplicar o filtro
+        rows.forEach(function(row) {
+            var reservationDate = row.querySelector("td:nth-child(5)").innerText.trim();
+
+            if (reservationDate === formattedDate) {
+                row.style.display = ""; // Mostrar a linha
+            } else {
+                row.style.display = "none"; // Esconder a linha
+            }
+        });
+    }
+    function showAllRows() {
+        var rows = document.querySelectorAll("tbody tr");
+        rows.forEach(function(row) {
+            row.style.display = ""; // Mostrar todas as linhas
+        });
+    }
+</script>
