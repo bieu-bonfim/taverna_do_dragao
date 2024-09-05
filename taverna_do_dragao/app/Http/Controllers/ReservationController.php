@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ReservationPlaced;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Mail;
 
 class ReservationController extends Controller
 {
@@ -29,6 +30,9 @@ class ReservationController extends Controller
         $reservation->phone = $request->input('phone');
         $reservation->chairQuantity = $request->input('chairQuantity');
 
+        $email = new ReservationPlaced($reservation->name);
+        Mail::to($reservation->email)->send($email);
+
         if ($reservation->save()) {
             return view(("taverna.reservation.reservation"))->with('message', "A reserva foi cadastrada com sucesso. Verifique seu e-mail");
         }
@@ -40,10 +44,12 @@ class ReservationController extends Controller
         $reservations = Reservation::query()->orderBy('reservationDate')->get();
         return view('dashboard.reservation.index')->with(compact('reservations'));
     }
+
     public function editReservation(Request $request){
         $reservation = Reservation::findOrFail($request->id);
         return view('dashboard.reservation.edit')->with(compact('reservation'));
     }
+
     public function updateReservation(Request $request){
 
         $reservation = Reservation::findOrFail($request->id);

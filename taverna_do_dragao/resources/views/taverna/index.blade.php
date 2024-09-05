@@ -7,11 +7,7 @@
     <main class="main-home">
         <section>
             <div class="div-main-background">
-<<<<<<< Updated upstream
                 <img class="img-main-background" src="/img/bacground_taverna.png" alt="Minha Figura">
-=======
-                <img class="img-main-background" src="/img/background_main.png" alt="Minha Figura">
->>>>>>> Stashed changes
             </div>
             <div class="container-div-middle">
                 <div>
