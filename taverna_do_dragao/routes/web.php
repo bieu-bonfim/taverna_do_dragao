@@ -73,16 +73,16 @@ Route::controller(UserController::class)->group(function (){
 Route::controller(DashboardController::class)->group(function (){
     Route::get('/dashboard', 'index')->name('dashboard.index')->middleware('auth');
     Route::get('/dashboard/gestao-comandas', 'indexOrder')->name('dashboard.order.index')->middleware('auth');
-    Route::get('/dashboard/criar-comanda', 'createOrder')->name('dashboard.order.create')->middleware('is_admin');
+    Route::get('/dashboard/criar-comanda', 'createOrder')->name('dashboard.order.create')->middleware('auth');
     Route::post('/dashboard/order/create', 'storeOrder')->name('dashboard.order.store')->middleware('auth');
     Route::get('/dashboard/comanda/{id}', 'viewOrder')->name('dashboard.order.viewOrder')->middleware('auth');
     
     Route::get('/dashboard/gestao/cardapio', 'indexMenu')->name('dashboard.menu.index')->middleware('auth');
-    Route::get('/dashboard/gestao/cardapio/criar', 'createMenu')->name('dashboard.menu.create')->middleware('auth');
-    Route::post('/dashboard/gestao/cardapio/create', 'storeMenu')->name('dashboard.menu.store')->middleware('auth');
-    Route::delete('/dashboard/gestao/cardapio/delete/{id}', 'deleteProduct')->name('dashboard.menu.deleteProduct')->middleware('auth');
-    Route::get('/dashboard/gestao/cardapio/editar/{id}', 'editMenu')->name('dashboard.menu.edit')->middleware('auth');
-    Route::put('/dashboard/gestao/cardapio/edit/{id}', 'updateMenu')->name('dashboard.menu.update')->middleware('auth');
+    Route::get('/dashboard/gestao/cardapio/criar', 'createMenu')->name('dashboard.menu.create')->middleware('is_admin');
+    Route::post('/dashboard/gestao/cardapio/create', 'storeMenu')->name('dashboard.menu.store')->middleware('is_admin');
+    Route::delete('/dashboard/gestao/cardapio/delete/{id}', 'deleteProduct')->name('dashboard.menu.deleteProduct')->middleware('is_admin');
+    Route::get('/dashboard/gestao/cardapio/editar/{id}', 'editMenu')->name('dashboard.menu.edit')->middleware('is_admin');
+    Route::put('/dashboard/gestao/cardapio/edit/{id}', 'updateMenu')->name('dashboard.menu.update')->middleware('is_admin');
 
 
     Route::get('/dashboard/gestao/comanda/editar/{id}', 'indexEdit')->name('dashboard.order.edit')->middleware('auth');
@@ -94,16 +94,16 @@ Route::controller(DashboardController::class)->group(function (){
     Route::post('/dashboard/gestao/comanda/update/produto/{id}', 'updateOrderProduct')->name('dashboard.order.updateOrderProduct')->middleware('auth');
 
     Route::get('/dashboard/gestao/reserva', 'indexReservation')->name('dashboard.reservation.index')->middleware('auth');
-    Route::get('/dashboard/gestao/reserva/editar/{id}', 'editReservation')->name('dashboard.reservation.edit')->middleware('auth');
-    Route::put('/dashboard/gestao/reserva/update/{id}', 'updateReservation')->name('dashboard.reservation.update')->middleware('auth');
-    Route::delete('/dashboard/gestao/reserva/delete/{id}', 'deleteReservation')->name('dashboard.reservation.delete')->middleware('auth');
+    Route::get('/dashboard/gestao/reserva/editar/{id}', 'editReservation')->name('dashboard.reservation.edit')->middleware('is_admin');
+    Route::put('/dashboard/gestao/reserva/update/{id}', 'updateReservation')->name('dashboard.reservation.update')->middleware('is_admin');
+    Route::delete('/dashboard/gestao/reserva/delete/{id}', 'deleteReservation')->name('dashboard.reservation.delete')->middleware('is_admin');
 });
 
 Route::controller(ProfileController::class)->group(function (){
     Route::get('/dashboard/perfil/editar', 'index')->name('dashboard.profile.index')->middleware('auth');
     Route::put('/dashboard/perfil/update', 'update')->name('dashboard.profile.update')->middleware('auth');
 
-
+    
 });
 
 
